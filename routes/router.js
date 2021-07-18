@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 // Get the model
 const Sample = require('../models/sampleSchema');
+const User = require('../models/UserSchema');
+
+router.post('/user',(req,res)=>{
+    let user = new User(req.body)
+    user.save()
+})
 
 router.get('/',(req,res)=>{
     Sample.find().then(sample=>res.json(sample)).catch(err=>res.send(err))
