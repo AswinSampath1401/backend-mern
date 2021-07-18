@@ -12,7 +12,15 @@ router.post('/',(req,res)=>{
         task : req.body.task
     })
     console.log(dataTobeInserted);
-    Sample.create(dataTobeInserted).then(res.send('Data Inserted Successfully 😄🙌💥')).catch(err=>res.send(err));
+    // Sample.create(dataTobeInserted).then(res.send('Data Inserted Successfully 😄🙌💥')).catch(err=>res.send(err));
+    Sample.create(dataTobeInserted)
+        .then((dataTobeInserted)=>{
+            dataTobeInserted.user.name = req.user.name
+            dataTobeInserted.save()
+                .then((dataTobeInserted)=>res.json({dataTobeInserted}))
+                .catch(err=>res.json(err))
+        })
+        .catch(err=>res.json(err))
 })
 
 router.put('/:id',(req,res)=>{
