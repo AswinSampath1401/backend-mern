@@ -16,7 +16,8 @@ router.get('/',(req,res)=>{
 router.post('/',(req,res)=>{
     const dataTobeInserted = new Sample({
         task : req.body.task,
-        user : req.body.user
+        user : req.body.user,
+        address : req.body.user.address
     })
     console.log(dataTobeInserted);
     Sample.create(dataTobeInserted).then(res.send('Data Inserted Successfully 😄🙌💥')).catch(err=>res.send(err));
