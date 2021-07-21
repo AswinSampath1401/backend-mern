@@ -8,3 +8,5 @@ http:google.com.get('/)=> Google Controller => Data from Google website
 Controller => getting the data => front end => view => Router
 
 Can i Still Push??
+
+Okay things are working fine!!
